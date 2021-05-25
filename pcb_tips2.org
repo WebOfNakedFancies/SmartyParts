@@ -1,0 +1,145 @@
+As per
+https://www.robotroom.com/PCB-Layout-Tips.html
+
+* Flexible Voltage Regulator Layout
+  :PROPERTIES:
+  :CUSTOM_ID: flexible-voltage-regulator-layout
+  :END:
+linear voltage regulators
+ order of leads & type of package
+ varies from part to part
+
+[[file:pcb_tips2/e028ae47b3ab68004563afce17683b2d2383d41c.png]]\\
+Voltage regulator pinouts: 78L05, MCP1826, MCP1702-5002E
+
+Sometime after the board has been made, you may find that the circuit
+needs a bit more current, a higher input voltage, a lower dropout
+voltage, or maybe you just ran out of stock of a particular voltage
+regulator. With a little bit of forethought, you can design your circuit
+board to accept a variety of regulators.
+
+[[file:pcb_tips2/8b868a6490ae4d9e08afc369ecc9a78398865386.gif]]\\
+Flexible voltage regulator PCB layout
+
+Adding a fourth and fifth hole (in this case duplicating the input and
+output pins) permits the following pinouts:
+
+- +5, +UN, GND (top three holes)
+- GND, +UN, +5 (installed backwards in top three holes)
+- +UN, GND, +5 (middle three holes)
+- +5, GND, +UN (installed backwards in middle three holes)
+- GND, +5, +UN (bottom three holes)
+- +UN, +5, GND (installed backwards in bottom three holes)
+
+That covers all 6 permutations (3 factorial = 3! = 6) of pins. And, if
+you make sure all of the holes are 0.040 inch diameter, then you have
+covered both TO-220 and TO-92 packages.
+
+[[file:pcb_tips2/045d0df934ac00da1202cd0d13f54e13387f2d48.jpg]]\\
+Universal layout for three-pin linear voltage regulators
+
+* Choice of Trimmer Potentiometers
+  :PROPERTIES:
+  :CUSTOM_ID: TRIMPOT
+  :END:
+
+Small potentiometers (often called trimmers or trimpots) are also
+available in a [[file:Trimpots.html][variety of packages]]. The most
+common trimpots have 0.1-inch spaced leads, but the leads are attached
+in slightly different places with respect to the component body.
+
+[[file:pcb_tips2/577f4eeae87435ebb25a5f6510a7383ee2d31ab5.jpg]]\\
+Trimpot potentiometer pinouts.
+
+The leftmost trimpot is the least expense and doesn't tend to twist off
+the board due to the staggered pins. The next trimpot is more compact,
+but more expensive. The next trimpot is a multiturn that can be mounted
+vertically or laid flat. The rightmost trimpot has a finger-friendly
+dial, with the non-staggered pins located at the front of the package.
+
+[[file:pcb_tips2/04e6377bba3c748ec021e6cc91e73cf19839b56c.gif]]\\
+Potentiometer multi-compatible PCB layout
+
+To be compatible with all of those pinouts, you can lay out a 3×3 grid
+from the front of the package up through the center. All of the trimpots
+in the previous photograph can be dropped into that same location on the
+board.
+
+On almost all through-hole potentiometers, the center pin tends to be
+the wiper. However, you could extend the hole pattern grid to the top of
+the layout in case you need to orient the potentiometer “upside down” if
+turning the potentiometer in a certain direction produces the opposite
+effect desired on the circuit.
+
+* Choice of Capacitors
+  :PROPERTIES:
+  :CUSTOM_ID: choice-of-capacitors
+  :END:
+
+Use three holes for capacitors, so that you can choose between 0.1 inch
+and 0.2 inch spaced parts at assembly time.
+
+[[file:pcb_tips2/549d74c06f29165660bc2c3427a129f9e582938d.gif]]
+   [[file:pcb_tips2/326c48942d8db781d758eebc40b5078f1ecfe0d8.jpg]]\\
+Extended capacitor pattern accepts capacitors with the same values but
+different lead spacings
+
+For consistancy, make the first pad square and have it be positive. The
+other two holes are ground and are connected together.
+
+Regardless of the size of the capacitor you insert, you always know that
+the first hole must be filled. The silkscreen outline also makes it
+understood that smaller parts should be aligned to the first hole.
+
+An added benefit of the extra hole is that you can use it as a spare
+ground connection if you made a mistake somewhere else on the board.
+
+* Error-Free Part Insertion
+  :PROPERTIES:
+  :CUSTOM_ID: error-free-part-insertion
+  :END:
+
+Tactile pushbuttons are commonplace on electronic circuits due to their
+compact size, high reliability, and low cost. The most popular tactile
+pushbutton package contains four pins (for stability when pressed) and
+appears to be square.
+
+[[file:pcb_tips2/4bd565058834b6f342c11274b2c82a44a32d750f.png]]\\
+Tactile pushbutton.
+
+In reality, the package is rectangular (slightly longer in one
+dimension), but you can incorrectly install it 90° out of orientation if
+you force the pins into the PCB holes. Normally, when pressed, the
+button connects one pair of pins to the other pair of pins. But, if the
+tactile button is installed incorrectly, it will seem as though the
+button is always pressed.
+
+Before installing, you can carefully measure the continuity of the pins
+using a multimeter. Or, you can lay out the PCB such that the button can
+be installed in any orientation and still work correctly.
+
+[[file:pcb_tips2/a00e0d2c393830f4cb1489937cb99b77c036c494.gif]]\\
+Pushbutton corner connections PCB layout
+
+By wiring the circuit only to the pins on opposite corners, you are sure
+to get only one pin from one side of the switch, and another pin from
+the opposite side, electrically speaking. You can demonstrate this to
+yourself by measuring the continuity of opposite pins on a switch using
+a multimeter. No matter which two corner leads you select, a standard
+tactile pushbutton will always show continuity when pressed and no
+continuity when released.
+
+* Button Choice
+  :PROPERTIES:
+  :CUSTOM_ID: button-choice
+  :END:
+
+You can make the pushbutton pattern more versitile by adding three extra
+holes in the middle.
+
+[[file:pcb_tips2/0e885f42648e8ba945b963979d60bc37a892ebe3.gif]]
+ [[file:pcb_tips2/12917cea6db701a12894ea3606fba01408353f63.jpg]]\\
+Pushbutton pattern permits choice of parts
+
+Now the patten can fit several types of pushbuttons or a Molex KK
+connector for off-board buttons.
